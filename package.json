@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "react refresher course",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medaVyshnavi/namasteReact.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "vyshnavi_meda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/medaVyshnavi/namasteReact/issues"
+  },
+  "homepage": "https://github.com/medaVyshnavi/namasteReact#readme",
+  "devDependencies": {
+    "parcel": "^2.10.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
