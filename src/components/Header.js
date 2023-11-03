@@ -1,8 +1,26 @@
 import { useState } from "react";
 import logo from "../img/logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const navItems = ["Home", "About", "Contact Us", "Cart"];
+  const navItems = [
+    {
+      name: "Home",
+      route: "/",
+    },
+    {
+      name: "About",
+      route: "/about",
+    },
+    {
+      name: "Contact Us",
+      route: "/contact",
+    },
+    {
+      name: "Cart",
+      route: "/cart",
+    },
+  ];
   const [value, setValue] = useState(true);
   return (
     <div className="header">
@@ -12,7 +30,7 @@ const Header = () => {
       <ul className="nav-items">
         {navItems.map((item, index) => (
           <li key={index} className="items">
-            {item}
+            <Link to={item.route}>{item.name}</Link>
           </li>
         ))}
         <button onClick={() => setValue(!value)}>

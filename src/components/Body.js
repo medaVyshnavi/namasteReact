@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import ShimmerUI from "./ShimmerUI";
+import { RES_API } from "../../utils/constants";
+import { Link } from "react-router-dom";
 // import data from "../../constanst/data.json"; replaced with live data
 
 export const Body = () => {
@@ -13,9 +15,7 @@ export const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const res = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const res = await fetch(RES_API);
     const data = await res.json();
     setResData(
       data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -62,7 +62,11 @@ export const Body = () => {
       <div className="container">
         {filteredValues.length > 0 ? (
           filteredValues.map((res) => (
-            <Card key={res.info.id} data={res.info} />
+            <div key={res.info.id}>
+              <Link to={`menu/${res.info.id}`}>
+                <Card data={res.info} />
+              </Link>
+            </div>
           ))
         ) : (
           <div>No results Found</div>
