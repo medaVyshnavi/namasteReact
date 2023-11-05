@@ -50,21 +50,27 @@ export const Body = () => {
     <ShimmerUI />
   ) : (
     <div>
-      <div className="component">
-        <div className="filter">
+      <div className="flex items-center my-8 mx-4">
+        <div className="border-solid border-current">
           <input
+            className="border-solid border-current border-[1px] rounded-lg py-1"
             type="text"
             value={searchFilter}
             onChange={(e) => setSearchFilter(e.target.value)}
           />
-          <button onClick={filterHandler}>Search</button>
+          <button
+            className="bg-green-100 px-3 py-2 rounded-lg ml-2"
+            onClick={filterHandler}
+          >
+            Search
+          </button>
         </div>
-        <div className="topRated">
+        <div className="bg-green-100 px-3 py-2 rounded-lg ml-2">
           <button onClick={getTopRatingFilters}>Top Rated Restaurants</button>
         </div>
       </div>
 
-      <div className="container">
+      <div className="flex flex-wrap">
         {filteredValues?.length > 0 ? (
           filteredValues.map((res) => (
             <div key={res.info.id}>

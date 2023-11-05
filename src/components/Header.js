@@ -29,19 +29,17 @@ const Header = () => {
   const [value, setValue] = useState(true);
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
-      <div className="logo">
+    <div className="flex justify-between items-center mx-6">
+      <div className="w-36">
         <img src={logo}></img>
       </div>
-      <ul className="nav-items">
-        <li>
-          <span
-            style={{ backgroundColor: `${onlineStatus ? "green" : "red"}` }}
-          ></span>
+      <ul className="flex justify-around items-center">
+        <li className="px-4">
           Status
+          <span>{onlineStatus ? "✅" : "🔴"}</span>
         </li>
         {navItems.map((item, index) => (
-          <li key={index} className="items">
+          <li key={index} className="px-4">
             <Link to={item.route}>{item.name}</Link>
           </li>
         ))}
