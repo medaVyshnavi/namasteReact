@@ -17,3 +17,11 @@
 - File compression
 - Faster Build
 - consisting hashing
+
+# optimising a large scale app
+
+- chunking
+- lazy loading
+- code splitting
+- dynamic import
+- dynamic bundling

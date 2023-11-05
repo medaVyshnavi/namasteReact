@@ -68,3 +68,15 @@
 .topRated {
   margin: 0 10px;
 }
+
+.nav-items li span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.nav-items li {
+  list-style: none;
+}

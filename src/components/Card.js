@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGE_URL } from "../../utils/constants";
+import { IMAGE_URL } from "../utils/constants";
 
 export const Card = ({ data }) => {
   const { name, costForTwo, cuisines, sla, cloudinaryImageId, avgRating } =

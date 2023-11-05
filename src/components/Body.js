@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import ShimmerUI from "./ShimmerUI";
-import { RES_API } from "../../utils/constants";
+import { RES_API } from "../utils/constants";
 import { Link } from "react-router-dom";
-// import data from "../../constanst/data.json"; replaced with live data
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 export const Body = () => {
   const [resData, setResData] = useState([]);
   const [searchFilter, setSearchFilter] = useState("");
   const [filteredValues, setFilteredValues] = useState([]);
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -41,6 +42,10 @@ export const Body = () => {
     }
   };
 
+  if (onlineStatus === false) {
+    return "Looks like you are offline please check your internet connection";
+  }
+
   return resData?.length === 0 ? (
     <ShimmerUI />
   ) : (
@@ -60,7 +65,7 @@ export const Body = () => {
       </div>
 
       <div className="container">
-        {filteredValues.length > 0 ? (
+        {filteredValues?.length > 0 ? (
           filteredValues.map((res) => (
             <div key={res.info.id}>
               <Link to={`menu/${res.info.id}`}>
