@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
+import Card, { PromotedCard } from "./Card";
 import ShimmerUI from "./ShimmerUI";
 import { RES_API } from "../utils/constants";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ export const Body = () => {
   const [searchFilter, setSearchFilter] = useState("");
   const [filteredValues, setFilteredValues] = useState([]);
   const onlineStatus = useOnlineStatus();
+
+  const EnhancedCard = PromotedCard(Card);
 
   useEffect(() => {
     fetchData();
@@ -50,7 +52,7 @@ export const Body = () => {
     <ShimmerUI />
   ) : (
     <div>
-      <div className="flex items-center my-8 mx-4">
+      <div className="flex items-center my-8 mx- px-14">
         <div className="border-solid border-current">
           <input
             className="border-solid border-current border-[1px] rounded-lg py-1"
@@ -75,7 +77,11 @@ export const Body = () => {
           filteredValues.map((res) => (
             <div key={res.info.id}>
               <Link to={`menu/${res.info.id}`}>
-                <Card data={res.info} />
+                {res.info.veg ? (
+                  <EnhancedCard data={res.info} />
+                ) : (
+                  <Card data={res.info} />
+                )}
               </Link>
             </div>
           ))
@@ -85,6 +91,10 @@ export const Body = () => {
       </div>
     </div>
   );
+};
+
+const withPromotedTag = () => {
+  return {};
 };
 
 export default Body;

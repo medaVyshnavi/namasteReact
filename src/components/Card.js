@@ -2,10 +2,11 @@ import React from "react";
 import { IMAGE_URL } from "../utils/constants";
 
 export const Card = ({ data }) => {
+  console.log(data.veg);
   const { name, costForTwo, cuisines, sla, cloudinaryImageId, avgRating } =
     data;
   return (
-    <div className="w-52 h-[470px] m-4 border-[1px] bg-[#f0f0f0] p-3 rounded-lg">
+    <div className="w-52 h-[490px] m-4 border-[1px] bg-[#f0f0f0] p-1 rounded-lg">
       <img
         src={`${IMAGE_URL}${cloudinaryImageId}`}
         className="h-52 w-60 rounded-md"
@@ -19,6 +20,20 @@ export const Card = ({ data }) => {
       </div>
     </div>
   );
+};
+
+// higher order components
+export const PromotedCard = (Card) => {
+  return (props) => {
+    return (
+      <>
+        <label className="bg-green-500 text-white absolute rounded-md px-1">
+          Vegetarian Food
+        </label>
+        <Card {...props} />
+      </>
+    );
+  };
 };
 
 export default Card;
