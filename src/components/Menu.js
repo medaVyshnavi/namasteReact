@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import ShimmerUI from "./ShimmerUI";
 import useMenu from "../utils/useMenu";
@@ -7,6 +7,7 @@ import RestaurantCategory from "./RestaurantCategory";
 const Menu = () => {
   const { resId } = useParams();
   const menuInfo = useMenu(resId);
+  const [isOpen, setIsOpen] = useState(0);
 
   if (menuInfo === null) return <ShimmerUI />;
 
@@ -24,13 +25,16 @@ const Menu = () => {
   return (
     <>
       <div className="text-center">
-        <h2 className="text-center text-lg font-bold">{name}</h2>
-        <h3>{cuisines.join(", ")}</h3>
+        <h1 className="text-center text-lg font-bold">{name}</h1>
+        <h3 className="my-4">{cuisines.join(", ")}</h3>
         <div>
           {categories?.map((item, index) => (
-            <div key={index}>
-              <RestaurantCategory data={item.card.card} />
-            </div>
+            <RestaurantCategory
+              key={index}
+              data={item.card.card}
+              isOpen={index === isOpen ? true : false}
+              setIsOpen={setIsOpen}
+            />
           ))}
         </div>
       </div>
