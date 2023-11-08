@@ -2,7 +2,6 @@ import React from "react";
 import { IMAGE_URL } from "../utils/constants";
 
 export const Card = ({ data }) => {
-  console.log(data.veg);
   const { name, costForTwo, cuisines, sla, cloudinaryImageId, avgRating } =
     data;
   return (

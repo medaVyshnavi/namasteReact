@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMAGE_URL } from "../utils/constants";
 
 const RestaurantCategory = ({ data, isOpen, setIsOpen }) => {
@@ -6,7 +6,7 @@ const RestaurantCategory = ({ data, isOpen, setIsOpen }) => {
     <div className="w-6/12 m-auto mt-8">
       <div className="my-5">
         <div
-          onClick={() => setIsOpen()}
+          onClick={setIsOpen}
           className="flex justify-between cursor-pointer"
         >
           <h1 className="font-bold">

@@ -7,6 +7,7 @@ import RestaurantCategory from "./RestaurantCategory";
 const Menu = () => {
   const { resId } = useParams();
   const menuInfo = useMenu(resId);
+
   const [isOpen, setIsOpen] = useState(0);
 
   if (menuInfo === null) return <ShimmerUI />;
@@ -20,7 +21,14 @@ const Menu = () => {
       res?.card?.card["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
-  console.log(categories);
+
+  const handleChange = (index) => {
+    if (index === isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(index);
+    }
+  };
 
   return (
     <>
@@ -29,12 +37,14 @@ const Menu = () => {
         <h3 className="my-4">{cuisines.join(", ")}</h3>
         <div>
           {categories?.map((item, index) => (
-            <RestaurantCategory
-              key={index}
-              data={item.card.card}
-              isOpen={index === isOpen ? true : false}
-              setIsOpen={setIsOpen}
-            />
+            <div>
+              <RestaurantCategory
+                key={index}
+                data={item.card.card}
+                isOpen={index === isOpen ? true : false}
+                setIsOpen={() => handleChange(index)}
+              />
+            </div>
           ))}
         </div>
       </div>

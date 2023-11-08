@@ -6,7 +6,7 @@ const _404 = () => {
   return (
     <>
       <div>Oops! Page not found</div>
-      <div>{error.error.message}</div>
+      <div>{error?.error?.message}</div>
     </>
   );
 };
