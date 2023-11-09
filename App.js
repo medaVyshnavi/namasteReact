@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header";
 import Body from "./src/components/Body";
@@ -7,16 +7,23 @@ import ContactUs from "./src/components/ContactUs";
 import Cart from "./src/components/Cart";
 import _404 from "./src/components/404";
 import Menu from "./src/components/Menu";
+import UserDetails from "./src/utils/userContext";
 
 const Grocery = lazy(() => import("./src/components/Grocery"));
 const About = lazy(() => import("./src/components/About"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    // api call;
+    setUserName("Vismaya");
+  }, []);
   return (
-    <>
+    <UserDetails.Provider value={{ loggedInUser: userName, setUserName }}>
       <Header />
       <Outlet />
-    </>
+    </UserDetails.Provider>
   );
 };
 

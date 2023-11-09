@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card, { PromotedCard } from "./Card";
 import ShimmerUI from "./ShimmerUI";
 import { RES_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserDetails from "../utils/userContext";
 
 export const Body = () => {
   const [resData, setResData] = useState([]);
@@ -12,6 +13,7 @@ export const Body = () => {
   const onlineStatus = useOnlineStatus();
 
   const EnhancedCard = PromotedCard(Card);
+  const { loggedInUser, setUserName } = useContext(UserDetails);
 
   useEffect(() => {
     fetchData();
@@ -69,6 +71,13 @@ export const Body = () => {
         </div>
         <div className="bg-green-100 px-3 py-2 rounded-lg ml-2">
           <button onClick={getTopRatingFilters}>Top Rated Restaurants</button>
+        </div>
+        <div>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
 

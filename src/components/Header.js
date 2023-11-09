@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserDetails from "../utils/userContext";
 
 const Header = () => {
   const navItems = [
@@ -28,6 +29,7 @@ const Header = () => {
   ];
   const [value, setValue] = useState(true);
   const onlineStatus = useOnlineStatus();
+  const details = useContext(UserDetails);
   return (
     <div className="flex justify-between items-center mx-6">
       <div className="w-36">
@@ -46,6 +48,7 @@ const Header = () => {
         <button onClick={() => setValue(!value)}>
           {value ? "Login" : "Logout"}
         </button>
+        <li className="px-4">👩‍💻{details.loggedInUser}</li>
       </ul>
     </div>
   );
