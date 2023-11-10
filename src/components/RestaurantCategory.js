@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { IMAGE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const RestaurantCategory = ({ data, isOpen, setIsOpen }) => {
+  const dispatch = useDispatch();
+  const handleAddItem = (name) => {
+    dispatch(addItem(name));
+    console.log(name);
+  };
   return (
     <div className="w-6/12 m-auto mt-8">
       <div className="my-5">
@@ -41,7 +48,10 @@ const RestaurantCategory = ({ data, isOpen, setIsOpen }) => {
                         className="rounded-md"
                       />
                       <div className="absolute top-2/3 left-1/3">
-                        <button className="text-green-500  bg-white rounded-md border border-gray-200 py-1 px-2">
+                        <button
+                          className="text-green-500  bg-white rounded-md border border-gray-200 py-1 px-2"
+                          onClick={() => handleAddItem(list?.card?.info?.name)}
+                        >
                           Add +{" "}
                         </button>
                       </div>

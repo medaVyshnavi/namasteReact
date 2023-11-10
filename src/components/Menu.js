@@ -8,7 +8,7 @@ const Menu = () => {
   const { resId } = useParams();
   const menuInfo = useMenu(resId);
 
-  const [isOpen, setIsOpen] = useState(0);
+  const [isOpen, setIsOpen] = useState(null);
 
   if (menuInfo === null) return <ShimmerUI />;
 

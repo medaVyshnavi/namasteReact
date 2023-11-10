@@ -3,6 +3,7 @@ import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserDetails from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navItems = [
@@ -19,17 +20,18 @@ const Header = () => {
       route: "/contact",
     },
     {
-      name: "Cart",
-      route: "/cart",
-    },
-    {
       name: "Grocery",
       route: "/grocery",
+    },
+    {
+      name: "🛒",
+      route: "/cart",
     },
   ];
   const [value, setValue] = useState(true);
   const onlineStatus = useOnlineStatus();
   const details = useContext(UserDetails);
+  const items = useSelector((store) => store.cart.items);
   return (
     <div className="flex justify-between items-center mx-6">
       <div className="w-36">
@@ -45,6 +47,7 @@ const Header = () => {
             <Link to={item.route}>{item.name}</Link>
           </li>
         ))}
+        <span className="pr-3">{items.length}</span>
         <button onClick={() => setValue(!value)}>
           {value ? "Login" : "Logout"}
         </button>

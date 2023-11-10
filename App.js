@@ -8,6 +8,8 @@ import Cart from "./src/components/Cart";
 import _404 from "./src/components/404";
 import Menu from "./src/components/Menu";
 import UserDetails from "./src/utils/userContext";
+import appStore from "./src/utils/appStore";
+import { Provider } from "react-redux";
 
 const Grocery = lazy(() => import("./src/components/Grocery"));
 const About = lazy(() => import("./src/components/About"));
@@ -20,10 +22,12 @@ const AppLayout = () => {
     setUserName("Vismaya");
   }, []);
   return (
-    <UserDetails.Provider value={{ loggedInUser: userName, setUserName }}>
-      <Header />
-      <Outlet />
-    </UserDetails.Provider>
+    <Provider store={appStore}>
+      <UserDetails.Provider value={{ loggedInUser: userName, setUserName }}>
+        <Header />
+        <Outlet />
+      </UserDetails.Provider>
+    </Provider>
   );
 };
 
