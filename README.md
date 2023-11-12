@@ -25,3 +25,22 @@
 - code splitting
 - dynamic import
 - dynamic bundling
+
+# Testing (setting up testing env)
+
+- Install React testing library
+- Install Jest
+- Install babel dependencies
+- Configure babel
+- Configure parcel config file disable default babel transpilation
+- configure jest
+- install jsdom
+- install @babel-preset-react to support JSX in testing
+- include the preset-react in the babel.config.js
+- install @testing-library/jest-dom
+
+# steps in testing
+
+- render
+- query
+- assertion
