@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import logo from "../img/logo.png";
+// import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserDetails from "../utils/userContext";
@@ -35,7 +35,10 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center mx-6">
       <div className="w-36">
-        <img src={logo}></img>
+        <img
+          className="w-30 h-20"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnn4m1Ap6mClU9fZq6esWlK8E6vIvB5mKk2T9XCxzs4QhA5LeOXh3EVy_HrM1_lgXDTxY&usqp=CAU"
+        ></img>
       </div>
       <ul className="flex justify-around items-center">
         <li className="px-4">
