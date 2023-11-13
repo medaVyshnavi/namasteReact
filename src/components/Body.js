@@ -59,6 +59,7 @@ export const Body = () => {
           <input
             className="border-solid border-current border-[1px] rounded-lg py-1"
             type="text"
+            data-testid="searchInput"
             value={searchFilter}
             onChange={(e) => setSearchFilter(e.target.value)}
           />
@@ -84,7 +85,7 @@ export const Body = () => {
       <div className="flex flex-wrap">
         {filteredValues?.length > 0 ? (
           filteredValues.map((res) => (
-            <div key={res.info.id}>
+            <div key={res.info.id} data-testid="resCard">
               <Link to={`menu/${res.info.id}`}>
                 {res.info.veg ? (
                   <EnhancedCard data={res.info} />
