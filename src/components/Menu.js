@@ -37,7 +37,7 @@ const Menu = () => {
         <h3 className="my-4">{cuisines.join(", ")}</h3>
         <div>
           {categories?.map((item, index) => (
-            <div>
+            <div key={index}>
               <RestaurantCategory
                 key={index}
                 data={item.card.card}
